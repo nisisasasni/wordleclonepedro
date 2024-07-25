@@ -35,7 +35,12 @@ nav h1 {
   padding-top: 50px;
   flex-direction: column;
 }
-
+.bnr {
+  display: flex;
+  flex-direction: row;
+  max-width: 50%;
+  max-height: 20%;
+}
 .board {
   width: 450px;
   height: 550px;
@@ -45,15 +50,15 @@ nav h1 {
 }
 
 .row {
-  flex: 33%;
+  flex: 20%;
   display: flex;
   flex-direction: row;
-  margin: 5px;
+  margin: 0px;
 }
 
 .letter {
-  flex: 33%;
-  height: 100%;
+  flex: 20%;
+  height: 20%;
   border: 1px solid grey;
   margin: 5px;
   display: grid;

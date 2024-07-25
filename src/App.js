@@ -1,5 +1,6 @@
 import "./App.css";
 import Board from "./components/Board";
+import ResultBoard from "./components/ResultBoard";
 import Keyboard from "./components/Keyboard";
 import { boardDefault, generateWordSet } from "./Words";
 import React, { useState, createContext, useEffect } from "react";
@@ -89,7 +90,10 @@ function App() {
         }}
       >
         <div className="game">
-          <Board />
+          <div className="bnr">
+            <Board />
+            <ResultBoard />
+          </div>
           {gameOver.gameOver ? <GameOver /> : <Keyboard />}
         </div>
       </AppContext.Provider>
