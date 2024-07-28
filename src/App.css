@@ -40,13 +40,13 @@ nav h1 {
 }
 
 .board {
-  width: 250px;
+  width: 230px;
   height: 55vh;
   display: flex;
   flex-direction: column;
 }
 .resultboard {
-  width: 170px;
+  width: 150px;
   height: 55vh;
   display: flex;
   flex-direction: column;
@@ -93,7 +93,7 @@ nav h1 {
   font-weight: bolder;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #3a393c;
+  background-color: #d45e4c;
   border: 1px solid black;
 }
 .letter {
@@ -118,7 +118,7 @@ nav h1 {
 }
 
 #error {
-  background-color: #3a393c;
+  background-color: #d45e4c;
 }
 #blank {
   background-color: black;
@@ -147,9 +147,9 @@ nav h1 {
 }
 
 .key {
-  width: 38px;
+  width: 33px;
   height: 45px;
-  margin: 2px;
+  margin: 1px;
   border-radius: 4px;
   display: grid;
   place-items: center;

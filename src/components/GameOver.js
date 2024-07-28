@@ -13,15 +13,9 @@ function GameOver() {
   } = useContext(AppContext);
   return (
     <div className="gameOver">
-      <h3>
-        {gameOver.guessedWord
-          ? "You Correctly Guessed the Wordle"
-          : "You Failed to Guess the Word"}
-      </h3>
-      <h1>Correct Word: {correctWord}</h1>
-      {gameOver.guessedWord && (
-        <h3>You guessed in {currAttempt.attempt} attempts</h3>
-      )}
+      <h3>{gameOver.guessedWord ? "Kamu benar!" : "Nice try bos"}</h3>
+      <h1>Jawabannya {correctWord}</h1>
+      {gameOver.guessedWord}
     </div>
   );
 }

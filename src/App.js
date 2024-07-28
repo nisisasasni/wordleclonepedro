@@ -2,19 +2,13 @@ import "./App.css";
 import Board from "./components/Board";
 import ResultBoard from "./components/ResultBoard";
 import Keyboard from "./components/Keyboard";
-import {
-  boardDefault,
-  resultBoardDefault,
-  generateWordSet,
-  buttonColorDefault,
-} from "./Words";
+import { boardDefault, resultBoardDefault, generateWordSet } from "./Words";
 import React, { useState, createContext, useEffect } from "react";
 import GameOver from "./components/GameOver";
 
 export const AppContext = createContext();
 
 function App() {
-  const [buttonColor, setButtonColor] = useState(buttonColorDefault);
   const [board, setBoard] = useState(boardDefault);
   const [resultboard, setResultBoard] = useState(resultBoardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
@@ -33,11 +27,8 @@ function App() {
     });
   }, []);
   function remove_character(str, char_pos) {
-    // Extract the substring from the beginning of str up to (but not including) char_pos
     let part1 = str.substring(0, char_pos);
-    // Extract the substring from char_pos + 1 to the end of str
     let part2 = str.substring(char_pos + 1, str.length);
-    // Return the concatenation of part1 and part2, effectively removing the character at char_pos
     return part1 + part2;
   }
   function calculateResult(key, guess) {
@@ -78,14 +69,17 @@ function App() {
       currWord += board[currAttempt.attempt][i];
     }
     if (wordSet.has(currWord.toLowerCase())) {
-      const res = calculateResult(correctWord, currWord.toLowerCase());
+      const res = calculateResult(
+        correctWord.toLowerCase(),
+        currWord.toLowerCase(),
+      );
       updateResult(currAttempt.attempt, res);
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     } else {
       alert("Word not found");
     }
 
-    if (currWord === correctWord) {
+    if (currWord.toLowerCase() === correctWord.toLowerCase()) {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
@@ -139,8 +133,6 @@ function App() {
           disabledLetters,
           gameOver,
           resultboard,
-          buttonColor,
-          setButtonColor,
         }}
       >
         <div className="game">
