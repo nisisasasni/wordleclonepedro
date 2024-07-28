@@ -7,34 +7,70 @@ function ResultBoard() {
     <div className="resultboard">
       {" "}
       <div className="row">
-        <Result letterPos={0} attemptVal={0} />
-        <Result letterPos={1} attemptVal={0} />
-        <Result letterPos={2} attemptVal={0} />
+        <div className="column1">
+          <Result letterPos={0} attemptVal={0} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={0} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={0} />
+        </div>
       </div>
       <div className="row">
-        <Result letterPos={0} attemptVal={1} />
-        <Result letterPos={1} attemptVal={1} />
-        <Result letterPos={2} attemptVal={1} />
+        <div className="column1">
+          <Result letterPos={0} attemptVal={1} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={1} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={1} />
+        </div>
       </div>
       <div className="row">
-        <Result letterPos={0} attemptVal={2} />
-        <Result letterPos={1} attemptVal={2} />
-        <Result letterPos={2} attemptVal={2} />
+        <div className="column1">
+          <Result letterPos={0} attemptVal={2} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={2} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={2} />
+        </div>
       </div>
       <div className="row">
-        <Result letterPos={0} attemptVal={3} />
-        <Result letterPos={1} attemptVal={3} />
-        <Result letterPos={2} attemptVal={3} />
+        <div className="column1">
+          <Result letterPos={0} attemptVal={3} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={3} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={3} />
+        </div>
       </div>
       <div className="row">
-        <Result letterPos={0} attemptVal={4} />
-        <Result letterPos={1} attemptVal={4} />
-        <Result letterPos={2} attemptVal={4} />
+        <div className="column1">
+          <Result letterPos={0} attemptVal={4} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={4} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={4} />
+        </div>
       </div>
       <div className="row">
-        <Result letterPos={0} attemptVal={5} />
-        <Result letterPos={1} attemptVal={5} />
-        <Result letterPos={2} attemptVal={5} />
+        <div className="column1">
+          <Result letterPos={0} attemptVal={5} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={5} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={5} />
+        </div>
       </div>
     </div>
   );
