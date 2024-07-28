@@ -42,7 +42,7 @@ function Keyboard() {
         });
       }
     },
-    [currAttempt]
+    [currAttempt],
   );
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboard);
@@ -65,11 +65,11 @@ function Keyboard() {
         })}
       </div>
       <div className="line3">
-        <Key keyVal={"ENTER"} bigKey />
+        <Key keyVal={"DELETE"} bigKey />
         {keys3.map((key) => {
           return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
         })}
-        <Key keyVal={"DELETE"} bigKey />
+        <Key keyVal={"ENTER"} bigKey />
       </div>
     </div>
   );

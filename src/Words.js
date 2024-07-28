@@ -22,6 +22,17 @@ export const resultBoardDefault = [
   ["", "", ""],
   ["", "", ""],
 ];
+export const buttonColorDefault = [
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+  ["blank", "blank", "blank", "blank", "blank"],
+];
 export const generateWordSet = async () => {
   let wordSet;
   let todaysWord;

@@ -2,13 +2,19 @@ import "./App.css";
 import Board from "./components/Board";
 import ResultBoard from "./components/ResultBoard";
 import Keyboard from "./components/Keyboard";
-import { boardDefault, resultBoardDefault, generateWordSet } from "./Words";
+import {
+  boardDefault,
+  resultBoardDefault,
+  generateWordSet,
+  buttonColorDefault,
+} from "./Words";
 import React, { useState, createContext, useEffect } from "react";
 import GameOver from "./components/GameOver";
 
 export const AppContext = createContext();
 
 function App() {
+  const [buttonColor, setButtonColor] = useState(buttonColorDefault);
   const [board, setBoard] = useState(boardDefault);
   const [resultboard, setResultBoard] = useState(resultBoardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
@@ -133,6 +139,8 @@ function App() {
           disabledLetters,
           gameOver,
           resultboard,
+          buttonColor,
+          setButtonColor,
         }}
       >
         <div className="game">
