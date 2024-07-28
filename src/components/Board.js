@@ -62,6 +62,13 @@ function Board() {
         <Letter letterPos={3} attemptVal={7} />
         <Letter letterPos={4} attemptVal={7} />
       </div>
+      <div className="row">
+        <Letter letterPos={0} attemptVal={8} />
+        <Letter letterPos={1} attemptVal={8} />
+        <Letter letterPos={2} attemptVal={8} />
+        <Letter letterPos={3} attemptVal={8} />
+        <Letter letterPos={4} attemptVal={8} />
+      </div>
     </div>
   );
 }
