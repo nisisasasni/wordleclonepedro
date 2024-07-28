@@ -26,7 +26,45 @@ function App() {
       setCorrectWord(words.todaysWord);
     });
   }, []);
-
+  function remove_character(str, char_pos) {
+    // Extract the substring from the beginning of str up to (but not including) char_pos
+    let part1 = str.substring(0, char_pos);
+    // Extract the substring from char_pos + 1 to the end of str
+    let part2 = str.substring(char_pos + 1, str.length);
+    // Return the concatenation of part1 and part2, effectively removing the character at char_pos
+    return part1 + part2;
+  }
+  function calculateResult(key, guess) {
+    var rightletter;
+    let green, yellow, red;
+    let i;
+    rightletter = [];
+    for (i = 0; i < 5; i++) {
+      if (key[i] === guess[i]) {
+        rightletter.push(i);
+      }
+    }
+    for (i = rightletter.length - 1; i >= -1; i--) {
+      guess = remove_character(guess, rightletter[i]);
+      key = remove_character(key, rightletter[i]);
+    }
+    green = rightletter.length;
+    console.log(rightletter);
+    yellow = 0;
+    while (guess.length > 0) {
+      for (i = 0; i < key.length; i++) {
+        if (guess[0] == key[i]) {
+          yellow = yellow + 1;
+          key = remove_character(key, i);
+          break;
+        }
+      }
+      guess = remove_character(guess, 0);
+    }
+    yellow = yellow / 2;
+    red = 5 - green - yellow;
+    return [green, yellow, red];
+  }
   const onEnter = () => {
     if (currAttempt.letter !== 5) return;
 
@@ -35,6 +73,8 @@ function App() {
       currWord += board[currAttempt.attempt][i];
     }
     if (wordSet.has(currWord.toLowerCase())) {
+      const res = calculateResult(correctWord, currWord.toLowerCase());
+      updateResult(currAttempt.attempt, res);
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     } else {
       alert("Word not found");
@@ -69,7 +109,13 @@ function App() {
       letter: currAttempt.letter + 1,
     });
   };
-
+  const updateResult = (attemptVal, res) => {
+    const newResultBoard = [...resultboard];
+    newResultBoard[attemptVal][0] = res[0];
+    newResultBoard[attemptVal][1] = res[1];
+    newResultBoard[attemptVal][2] = res[2];
+    setResultBoard(newResultBoard);
+  };
   return (
     <div className="App">
       <nav>
@@ -88,6 +134,7 @@ function App() {
           setDisabledLetters,
           disabledLetters,
           gameOver,
+          resultboard,
         }}
       >
         <div className="game">
