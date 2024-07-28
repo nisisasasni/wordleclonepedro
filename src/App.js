@@ -2,7 +2,7 @@ import "./App.css";
 import Board from "./components/Board";
 import ResultBoard from "./components/ResultBoard";
 import Keyboard from "./components/Keyboard";
-import { boardDefault, generateWordSet } from "./Words";
+import { boardDefault, resultBoardDefault, generateWordSet } from "./Words";
 import React, { useState, createContext, useEffect } from "react";
 import GameOver from "./components/GameOver";
 
@@ -10,6 +10,7 @@ export const AppContext = createContext();
 
 function App() {
   const [board, setBoard] = useState(boardDefault);
+  const [resultboard, setResultBoard] = useState(resultBoardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
   const [wordSet, setWordSet] = useState(new Set());
   const [correctWord, setCorrectWord] = useState("");
@@ -94,7 +95,9 @@ function App() {
             <Board />
             <ResultBoard />
           </div>
-          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          <div className="lower_section">
+            {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          </div>
         </div>
       </AppContext.Provider>
     </div>

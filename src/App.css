@@ -3,8 +3,11 @@
   background-color: #121212;
   width: 100vw;
   height: 100vh;
-  /* display: flex; */
+  display: flex;
   color: white;
+  flex-direction: column;
+  align-items: center;
+  place-items: center;
 }
 
 body {
@@ -13,9 +16,6 @@ body {
 }
 
 nav {
-  height: 60px;
-  width: 100%;
-  margin: 0;
   border-bottom: 1px solid grey;
   display: grid;
   place-items: center;
@@ -26,44 +26,47 @@ nav h1 {
   font-family: Helvetica, Arial, sans-serif;
   color: white;
   font-size: 45px;
-}
-.game {
-  width: 100vw;
-  height: calc(100vh - 170px);
   display: flex;
   align-items: center;
-  padding-top: 50px;
+}
+.game {
+  width: 50vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
   flex-direction: column;
 }
-.bnr {
-  display: flex;
-  flex-direction: row;
-  max-width: 50%;
-  max-height: 20%;
-}
+
 .board {
   width: 450px;
-  height: 550px;
+  height: 50vh;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
 }
-
+.resultboard {
+  width: 450px;
+  height: 50vh;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
 .row {
-  flex: 20%;
+  flex: 33%;
   display: flex;
   flex-direction: row;
-  margin: 0px;
+  margin: 5px;
 }
 
 .letter {
-  flex: 20%;
-  height: 20%;
+  flex: 33%;
+  height: 100%;
   border: 1px solid grey;
   margin: 5px;
   display: grid;
   place-items: center;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bolder;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
@@ -81,38 +84,32 @@ nav h1 {
   background-color: #3a393c;
 }
 
-.keyboard {
-  width: 700px;
-  height: 300px;
-  margin-top: 60px;
-}
-
 .line1 {
   flex: 33%;
   display: flex;
   flex-direction: row;
   display: flex;
   justify-content: center;
-  margin: 5px;
+  margin: 2px;
 }
 .line2 {
   flex: 33%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 5px;
+  margin: 2px;
 }
 .line3 {
   flex: 33%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 5px;
+  margin: 2px;
 }
 
 .key {
-  width: 50px;
-  height: 70px;
+  width: 30px;
+  height: 40px;
   margin: 5px;
   border-radius: 4px;
   display: grid;
@@ -129,4 +126,12 @@ nav h1 {
 }
 #disabled {
   background-color: #3a393c;
+}
+
+.lower_section {
+  height: 20vh;
+}
+.bnr {
+  display: flex;
+  flex-direction: row;
 }

@@ -8,7 +8,14 @@ export const boardDefault = [
   ["", "", "", "", ""],
   ["", "", "", "", ""],
 ];
-
+export const resultBoardDefault = [
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+];
 export const generateWordSet = async () => {
   let wordSet;
   let todaysWord;
