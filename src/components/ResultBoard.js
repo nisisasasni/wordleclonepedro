@@ -72,6 +72,28 @@ function ResultBoard() {
           <Result letterPos={2} attemptVal={5} />
         </div>
       </div>
+      <div className="row">
+        <div className="column1">
+          <Result letterPos={0} attemptVal={6} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={6} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={6} />
+        </div>
+      </div>
+      <div className="row">
+        <div className="column1">
+          <Result letterPos={0} attemptVal={7} />
+        </div>
+        <div className="column2">
+          <Result letterPos={1} attemptVal={7} />
+        </div>
+        <div className="column3">
+          <Result letterPos={2} attemptVal={7} />
+        </div>
+      </div>
     </div>
   );
 }

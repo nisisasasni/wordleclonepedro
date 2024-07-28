@@ -49,7 +49,6 @@ function App() {
       key = remove_character(key, rightletter[i]);
     }
     green = rightletter.length;
-    console.log(rightletter);
     yellow = 0;
     while (guess.length > 0) {
       for (i = 0; i < key.length; i++) {
@@ -84,7 +83,6 @@ function App() {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
-    console.log(currAttempt);
     if (currAttempt.attempt === 5) {
       setGameOver({ gameOver: true, guessedWord: false });
       return;
