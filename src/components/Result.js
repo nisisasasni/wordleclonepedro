@@ -3,13 +3,7 @@ import { AppContext } from "../App";
 import ResultBoard from "./ResultBoard";
 
 function Result({ letterPos, attemptVal }) {
-  const {
-    resultboard,
-    setDisabledLetters,
-    currAttempt,
-    correctWord,
-    currResult,
-  } = useContext(AppContext);
+  const { resultboard } = useContext(AppContext);
 
   return <div className="letter">{resultboard[attemptVal][letterPos]}</div>;
 }
