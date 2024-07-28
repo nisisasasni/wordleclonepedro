@@ -52,7 +52,7 @@ function App() {
     yellow = 0;
     while (guess.length > 0) {
       for (i = 0; i < key.length; i++) {
-        if (guess[0] == key[i]) {
+        if (guess[0] === key[i]) {
           yellow = yellow + 1;
           key = remove_character(key, i);
           break;
@@ -83,7 +83,7 @@ function App() {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
-    if (currAttempt.attempt === 5) {
+    if (currAttempt.attempt === 8) {
       setGameOver({ gameOver: true, guessedWord: false });
       return;
     }
@@ -117,7 +117,7 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <h1>Wordle</h1>
+        <h1>Katlaxoo</h1>
       </nav>
       <AppContext.Provider
         value={{
