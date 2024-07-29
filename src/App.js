@@ -19,11 +19,16 @@ function App() {
     gameOver: false,
     guessedWord: false,
   });
+  const [changeableColor, setChangeableColor] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
 
   useEffect(() => {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
+      console.log(words.todaysWord);
     });
   }, []);
   function remove_character(str, char_pos) {
@@ -74,6 +79,31 @@ function App() {
         currWord.toLowerCase(),
       );
       updateResult(currAttempt.attempt, res);
+      const start = 5 * currAttempt.attempt;
+      var elements = document.getElementsByClassName("letter");
+      if (res[0] === 5) {
+        for (let i = 0; i < 5; i++) {
+          elements[start + i].id = "correct";
+        }
+      } else if (res[1] === 5) {
+        for (let i = 0; i < 5; i++) {
+          elements[start + i].id = "almost";
+        }
+      } else if (res[2] === 5) {
+        for (let i = 0; i < 5; i++) {
+          elements[start + i].id = "error";
+        }
+      } else {
+        let newChangeable = changeableColor;
+        const start = 5 * currAttempt.attempt;
+
+        for (let i = 0; i < 5; i++) {
+          newChangeable[start + i] = 1;
+        }
+        setChangeableColor(newChangeable);
+        console.log(changeableColor);
+      }
+
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     } else {
       alert("Word not found");
@@ -114,6 +144,14 @@ function App() {
     newResultBoard[attemptVal][2] = res[2];
     setResultBoard(newResultBoard);
   };
+  const resetColor = () => {
+    var elements = document.getElementsByClassName("letter");
+    for (let i = 0; i < elements.length; i++) {
+      if (changeableColor[i] === 1) {
+        elements[i].id = "blank";
+      }
+    }
+  };
   return (
     <div className="App">
       <nav>
@@ -133,9 +171,13 @@ function App() {
           disabledLetters,
           gameOver,
           resultboard,
+          changeableColor,
         }}
       >
         <div className="game">
+          <div className="reset-btn" onClick={resetColor}>
+            RESET WARNA
+          </div>
           <div className="bnr">
             <Board />
             <ResultBoard />

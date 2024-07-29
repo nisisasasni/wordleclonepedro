@@ -6,8 +6,13 @@ const nextColor = (e) => {
   console.log(a);
 };
 function Letter({ letterPos, attemptVal }) {
-  const { board, setDisabledLetters, currAttempt, correctWord } =
-    useContext(AppContext);
+  const {
+    board,
+    setDisabledLetters,
+    currAttempt,
+    correctWord,
+    changeableColor,
+  } = useContext(AppContext);
   const letter = board[attemptVal][letterPos];
 
   useEffect(() => {
@@ -15,17 +20,19 @@ function Letter({ letterPos, attemptVal }) {
       setDisabledLetters((prev) => [...prev, letter]);
     }
   }, [currAttempt.attempt]);
-  const nextColor = (e) => {
-    let a = e.target.id;
-    console.log("warnae " + a);
-    if (a === "blank") {
-      e.target.id = "error";
-    } else if (a === "error") {
-      e.target.id = "almost";
-    } else if (a === "almost") {
-      e.target.id = "correct";
-    } else {
-      e.target.id = "blank";
+  const nextColor = () => {
+    var elements = document.getElementsByClassName("letter");
+    const idx = attemptVal * 5 + letterPos;
+    if (changeableColor[idx] === 1) {
+      if (elements[idx].id === "blank") {
+        elements[idx].id = "error";
+      } else if (elements[idx].id === "error") {
+        elements[idx].id = "almost";
+      } else if (elements[idx].id === "almost") {
+        elements[idx].id = "correct";
+      } else {
+        elements[idx].id = "blank";
+      }
     }
   };
   return (
