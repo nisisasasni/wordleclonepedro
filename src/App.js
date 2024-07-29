@@ -14,7 +14,7 @@ import GameOver from "./components/GameOver";
 export const AppContext = createContext();
 
 function App() {
-  const [wordLength, setWordLength] = useState(4);
+  const [wordLength, setWordLength] = useState(5);
   const [board, setBoard] = useState(boardDefault[wordLength - 1]);
   const [resultboard, setResultBoard] = useState(resultBoardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
