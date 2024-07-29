@@ -212,18 +212,7 @@ function App() {
       >
         <div className="game">
           <div className="upper-section">
-            <div className="restart-game" id="upper-btn" onClick={restartGame}>
-              Mulai Baru
-            </div>
-            <div id="upper-btn" onClick={updateLengthto4}>
-              4
-            </div>
-            <div id="upper-btn" onClick={updateLengthto5}>
-              5
-            </div>
-            <div id="upper-btn" onClick={updateLengthto6}>
-              6
-            </div>
+            
             <div className="reset-btn" id="upper-btn" onClick={resetColor}>
               Reset Warna
             </div>
