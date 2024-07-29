@@ -12,6 +12,7 @@ function Letter({ letterPos, attemptVal }) {
     currAttempt,
     correctWord,
     changeableColor,
+    wordLength,
   } = useContext(AppContext);
   const letter = board[attemptVal][letterPos];
 
@@ -22,7 +23,7 @@ function Letter({ letterPos, attemptVal }) {
   }, [currAttempt.attempt]);
   const nextColor = () => {
     var elements = document.getElementsByClassName("letter");
-    const idx = attemptVal * 5 + letterPos;
+    const idx = attemptVal * wordLength + letterPos;
     if (changeableColor[idx] === 1) {
       if (elements[idx].id === "blank") {
         elements[idx].id = "error";

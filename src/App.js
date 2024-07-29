@@ -2,14 +2,20 @@ import "./App.css";
 import Board from "./components/Board";
 import ResultBoard from "./components/ResultBoard";
 import Keyboard from "./components/Keyboard";
-import { boardDefault, resultBoardDefault, generateWordSet } from "./Words";
+import {
+  boardDefault,
+  resultBoardDefault,
+  generateWordSet,
+  changeableColorDefault,
+} from "./Words";
 import React, { useState, createContext, useEffect } from "react";
 import GameOver from "./components/GameOver";
 
 export const AppContext = createContext();
 
 function App() {
-  const [board, setBoard] = useState(boardDefault);
+  const [wordLength, setWordLength] = useState(4);
+  const [board, setBoard] = useState(boardDefault[wordLength - 1]);
   const [resultboard, setResultBoard] = useState(resultBoardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
   const [wordSet, setWordSet] = useState(new Set());
@@ -19,13 +25,12 @@ function App() {
     gameOver: false,
     guessedWord: false,
   });
-  const [changeableColor, setChangeableColor] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
+  const [changeableColor, setChangeableColor] = useState(
+    changeableColorDefault[wordLength - 1],
+  );
 
   useEffect(() => {
-    generateWordSet().then((words) => {
+    generateWordSet(wordLength).then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
       console.log(words.todaysWord);
@@ -41,7 +46,7 @@ function App() {
     let green, yellow, red;
     let i;
     rightletter = [];
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < wordLength; i++) {
       if (key[i] === guess[i]) {
         rightletter.push(i);
       }
@@ -63,14 +68,14 @@ function App() {
       guess = remove_character(guess, 0);
     }
     yellow = yellow / 2;
-    red = 5 - green - yellow;
+    red = wordLength - green - yellow;
     return [green, yellow, red];
   }
   const onEnter = () => {
-    if (currAttempt.letter !== 5) return;
+    if (currAttempt.letter !== wordLength) return;
 
     let currWord = "";
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < wordLength; i++) {
       currWord += board[currAttempt.attempt][i];
     }
     if (wordSet.has(currWord.toLowerCase())) {
@@ -79,25 +84,25 @@ function App() {
         currWord.toLowerCase(),
       );
       updateResult(currAttempt.attempt, res);
-      const start = 5 * currAttempt.attempt;
+      const start = wordLength * currAttempt.attempt;
       var elements = document.getElementsByClassName("letter");
-      if (res[0] === 5) {
-        for (let i = 0; i < 5; i++) {
+      if (res[0] === wordLength) {
+        for (let i = 0; i < wordLength; i++) {
           elements[start + i].id = "correct";
         }
-      } else if (res[1] === 5) {
-        for (let i = 0; i < 5; i++) {
+      } else if (res[1] === wordLength) {
+        for (let i = 0; i < wordLength; i++) {
           elements[start + i].id = "almost";
         }
-      } else if (res[2] === 5) {
-        for (let i = 0; i < 5; i++) {
+      } else if (res[2] === wordLength) {
+        for (let i = 0; i < wordLength; i++) {
           elements[start + i].id = "error";
         }
       } else {
         let newChangeable = changeableColor;
-        const start = 5 * currAttempt.attempt;
+        const start = wordLength * currAttempt.attempt;
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < wordLength; i++) {
           newChangeable[start + i] = 1;
         }
         setChangeableColor(newChangeable);
@@ -154,7 +159,7 @@ function App() {
   };
   const restartGame = () => {
     setCurrAttempt({ attempt: 0, letter: 0 });
-    generateWordSet().then((words) => {
+    generateWordSet(wordLength).then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
       console.log(words.todaysWord);
@@ -170,6 +175,18 @@ function App() {
       elements[i].innerHTML = "";
     }
   };
+  function updateLengthto4() {
+    setWordLength(4);
+    restartGame();
+  }
+  function updateLengthto5() {
+    setWordLength(5);
+    restartGame();
+  }
+  function updateLengthto6() {
+    setWordLength(6);
+    restartGame();
+  }
   return (
     <div className="App">
       <nav>
@@ -190,6 +207,7 @@ function App() {
           gameOver,
           resultboard,
           changeableColor,
+          wordLength,
         }}
       >
         <div className="game">
@@ -197,9 +215,15 @@ function App() {
             <div className="restart-game" id="upper-btn" onClick={restartGame}>
               Mulai Baru
             </div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
+            <div id="upper-btn" onClick={updateLengthto4}>
+              4
+            </div>
+            <div id="upper-btn" onClick={updateLengthto5}>
+              5
+            </div>
+            <div id="upper-btn" onClick={updateLengthto6}>
+              6
+            </div>
             <div className="reset-btn" id="upper-btn" onClick={resetColor}>
               Reset Warna
             </div>
