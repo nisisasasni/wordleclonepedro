@@ -111,7 +111,7 @@ function App() {
 
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     } else {
-      alert("Word not found");
+      alert("Kata tidak ditemukan");
     }
 
     if (currWord.toLowerCase() === correctWord.toLowerCase()) {
@@ -212,7 +212,6 @@ function App() {
       >
         <div className="game">
           <div className="upper-section">
-            
             <div className="reset-btn" id="upper-btn" onClick={resetColor}>
               Reset Warna
             </div>
