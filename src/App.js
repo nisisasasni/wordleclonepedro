@@ -78,10 +78,7 @@ function App() {
     for (let i = 0; i < wordLength; i++) {
       currWord += board[currAttempt.attempt][i];
     }
-    if (!wordSet.has(currWord.toLowerCase())) {
-      alert("Kata tidak ditemukan");
-      return;
-    } else {
+    if (wordSet.has(currWord.toLowerCase())) {
       const res = calculateResult(
         correctWord.toLowerCase(),
         currWord.toLowerCase(),
@@ -113,6 +110,8 @@ function App() {
       }
 
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
+    } else {
+      alert("Kata tidak ditemukan");
     }
 
     if (currWord.toLowerCase() === correctWord.toLowerCase()) {
@@ -134,7 +133,7 @@ function App() {
   };
 
   const onSelectLetter = (key) => {
-    if (currAttempt.letter > 4) return;
+    if (currAttempt.letter > wordLength - 1) return;
     const newBoard = [...board];
     newBoard[currAttempt.attempt][currAttempt.letter] = key;
     setBoard(newBoard);
