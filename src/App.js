@@ -152,6 +152,24 @@ function App() {
       }
     }
   };
+  const restartGame = () => {
+    setCurrAttempt({ attempt: 0, letter: 0 });
+    generateWordSet().then((words) => {
+      setWordSet(words.wordSet);
+      setCorrectWord(words.todaysWord);
+      console.log(words.todaysWord);
+    });
+    setDisabledLetters([]);
+    var elements = document.getElementsByClassName("letter");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = "";
+      elements[i].id = "blank";
+    }
+    var elements = document.getElementsByClassName("result");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = "";
+    }
+  };
   return (
     <div className="App">
       <nav>
@@ -175,8 +193,16 @@ function App() {
         }}
       >
         <div className="game">
-          <div className="reset-btn" onClick={resetColor}>
-            RESET WARNA
+          <div className="upper-section">
+            <div className="restart-game" id="upper-btn" onClick={restartGame}>
+              Mulai Baru
+            </div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div className="reset-btn" id="upper-btn" onClick={resetColor}>
+              Reset Warna
+            </div>
           </div>
           <div className="bnr">
             <Board />
