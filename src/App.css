@@ -23,10 +23,10 @@ nav {
 
 nav h1 {
   margin: 0;
-  padding: 8px;
+  padding: 15px;
   font-family: Helvetica, Arial, sans-serif;
   color: white;
-  font-size: 18px;
+  font-size: 25px;
   display: flex;
   align-items: center;
 }
@@ -107,6 +107,7 @@ nav h1 {
   font-weight: bolder;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
 }
 
 #correct {
@@ -178,9 +179,12 @@ nav h1 {
 }
 
 #upper-btn {
-  font-size: 7;
+  cursor: pointer;
+  font-size: 12;
   background-color: rgb(103, 103, 103);
-  padding: 1px;
+  padding: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 4px;
   align-self: center;
 
