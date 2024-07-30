@@ -224,8 +224,10 @@ function App() {
                 <div id="upper-btn">6 huruf</div>
               </a>
             </div>
-            <div className="buttons" onClick={giveUp}>
-              <div id="upper-btn">Menyerah</div>
+            <div className="buttons">
+              <div id="upper-btn" nClick={giveUp}>
+                Menyerah
+              </div>
               <a href="https://katlaxoo.vercel.app">
                 <div id="upper-btn">Mulai baru</div>
               </a>
