@@ -160,7 +160,6 @@ function App() {
   };
   const restartGame = () => {
     setCurrAttempt({ attempt: 0, letter: 0 });
-    setDisabledLetters([]);
     setGameOver({ gameOver: false, guessedWord: false });
     generateWordSet(wordLength).then((words) => {
       setWordSet(words.wordSet);
@@ -182,6 +181,10 @@ function App() {
     /* it will be called when queues did update */
     restartGame();
   }, [wordLength]);
+  useEffect(() => {
+    /* it will be called when queues did update */
+    setDisabledLetters([]);
+  }, [gameOver]);
 
   function updateLengthto4() {
     setWordLength(4);

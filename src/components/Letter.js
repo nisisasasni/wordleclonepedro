@@ -1,10 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 
-const nextColor = (e) => {
-  let a = e.target.style.backgroundColor;
-  console.log(a);
-};
 function Letter({ letterPos, attemptVal }) {
   const {
     board,
