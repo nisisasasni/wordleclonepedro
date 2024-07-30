@@ -111,7 +111,7 @@ function App() {
 
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     } else {
-      alert("Kata tidak ditemukan");
+      alert("Word not found");
     }
 
     if (currWord.toLowerCase() === correctWord.toLowerCase()) {
@@ -133,7 +133,8 @@ function App() {
   };
 
   const onSelectLetter = (key) => {
-    if (currAttempt.letter > 4) return;
+    console.log("posisi huruf " + currAttempt.letter);
+    if (currAttempt.letter > wordLength - 1) return;
     const newBoard = [...board];
     newBoard[currAttempt.attempt][currAttempt.letter] = key;
     setBoard(newBoard);
@@ -159,12 +160,13 @@ function App() {
   };
   const restartGame = () => {
     setCurrAttempt({ attempt: 0, letter: 0 });
+    setDisabledLetters([]);
+    setGameOver({ gameOver: false, guessedWord: false });
     generateWordSet(wordLength).then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
       console.log(words.todaysWord);
     });
-    setDisabledLetters([]);
     var elements = document.getElementsByClassName("letter");
     for (let i = 0; i < elements.length; i++) {
       elements[i].innerHTML = "";
@@ -175,17 +177,20 @@ function App() {
       elements[i].innerHTML = "";
     }
   };
+
+  useEffect(() => {
+    /* it will be called when queues did update */
+    restartGame();
+  }, [wordLength]);
+
   function updateLengthto4() {
     setWordLength(4);
-    restartGame();
   }
   function updateLengthto5() {
     setWordLength(5);
-    restartGame();
   }
   function updateLengthto6() {
     setWordLength(6);
-    restartGame();
   }
   return (
     <div className="App">
@@ -212,6 +217,18 @@ function App() {
       >
         <div className="game">
           <div className="upper-section">
+            <div className="restart-game" id="upper-btn" onClick={restartGame}>
+              Mulai Baru
+            </div>
+            <div id="upper-btn" onClick={updateLengthto4}>
+              4
+            </div>
+            <div id="upper-btn" onClick={updateLengthto5}>
+              5
+            </div>
+            <div id="upper-btn" onClick={updateLengthto6}>
+              6
+            </div>
             <div className="reset-btn" id="upper-btn" onClick={resetColor}>
               Reset Warna
             </div>
