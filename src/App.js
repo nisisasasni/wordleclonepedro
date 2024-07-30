@@ -225,7 +225,7 @@ function App() {
               </a>
             </div>
             <div className="buttons">
-              <div id="upper-btn" nClick={giveUp}>
+              <div id="upper-btn" onClick={giveUp}>
                 Menyerah
               </div>
               <a href="https://katlaxoo.vercel.app">
