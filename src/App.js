@@ -158,6 +158,9 @@ function App() {
       }
     }
   };
+  const giveUp = () => {
+    setGameOver({ gameOver: true, guessedWord: false });
+  };
   const restartGame = () => {
     setCurrAttempt({ attempt: 0, letter: 0 });
     generateWordSet(wordLength).then((words) => {
@@ -213,17 +216,22 @@ function App() {
       >
         <div className="game">
           <div className="upper-section">
-            <a href="https://katla400.vercel.app">
-              <div id="upper-btn">4 huruf</div>
-            </a>
-            <a href="https://katla600.vercel.app">
-              <div id="upper-btn">6 huruf</div>
-            </a>
-            <a href="https://katlaxoo.vercel.app">
-              <div id="upper-btn">Mulai baru</div>
-            </a>
-            <div className="reset-btn" id="upper-btn" onClick={resetColor}>
-              Reset Warna
+            <div className="word-length-opts">
+              <a href="https://katla400.vercel.app">
+                <div id="upper-btn">4 huruf</div>
+              </a>
+              <a href="https://katla600.vercel.app">
+                <div id="upper-btn">6 huruf</div>
+              </a>
+            </div>
+            <div className="buttons" onClick={giveUp}>
+              <div id="upper-btn">Menyerah</div>
+              <a href="https://katlaxoo.vercel.app">
+                <div id="upper-btn">Mulai baru</div>
+              </a>
+              <div className="reset-btn" id="upper-btn" onClick={resetColor}>
+                Reset Warna
+              </div>
             </div>
           </div>
           <div className="bnr">

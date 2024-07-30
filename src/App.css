@@ -195,7 +195,21 @@ nav h1 {
 }
 .upper-section {
   display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.word-length-opts {
+  display: flex;
   flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 2px;
 }
 a {
   color: inherit;
