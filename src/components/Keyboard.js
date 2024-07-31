@@ -52,6 +52,7 @@ function Keyboard() {
     };
   }, [handleKeyboard]);
 
+
   return (
     <div className="keyboard" onKeyDown={handleKeyboard}>
       <div className="line1">
