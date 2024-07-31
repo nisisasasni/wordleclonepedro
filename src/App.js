@@ -14,7 +14,7 @@ import GameOver from "./components/GameOver";
 export const AppContext = createContext();
 
 function App() {
-  const [wordLength, setWordLength] = useState(5);
+  const [wordLength, setWordLength] = useState(7);
   const [board, setBoard] = useState(boardDefault[wordLength - 1]);
   const [resultboard, setResultBoard] = useState(resultBoardDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
@@ -220,6 +220,9 @@ function App() {
               <a href="https://katla400.vercel.app">
                 <div id="upper-btn">4 huruf</div>
               </a>
+              <a href="https://katlaxoo.vercel.app">
+                <div id="upper-btn">5 huruf</div>
+              </a>
               <a href="https://katla600.vercel.app">
                 <div id="upper-btn">6 huruf</div>
               </a>
@@ -228,7 +231,7 @@ function App() {
               <div id="upper-btn" onClick={giveUp}>
                 Menyerah
               </div>
-              <a href="https://katlaxoo.vercel.app">
+              <a href="https://katla700.vercel.app">
                 <div id="upper-btn">Mulai baru</div>
               </a>
               <div className="reset-btn" id="upper-btn" onClick={resetColor}>
