@@ -28,7 +28,7 @@ function App() {
   const [changeableColor, setChangeableColor] = useState(
     changeableColorDefault[wordLength - 1],
   );
-
+  const [guess, setGuess] = useState('');
   useEffect(() => {
     generateWordSet(wordLength).then((words) => {
       setWordSet(words.wordSet);
@@ -72,6 +72,7 @@ function App() {
     return [green, yellow, red];
   }
   const onEnter = () => {
+    console.log(disabledLetters);
     if (currAttempt.letter !== wordLength) return;
 
     let currWord = "";
@@ -83,6 +84,9 @@ function App() {
         correctWord.toLowerCase(),
         currWord.toLowerCase(),
       );
+
+      setGuess(currWord.toLowerCase());
+
       updateResult(currAttempt.attempt, res);
       const start = wordLength * currAttempt.attempt;
       var elements = document.getElementsByClassName("letter");
@@ -166,6 +170,7 @@ function App() {
       setCorrectWord(words.todaysWord);
       console.log(words.todaysWord);
     });
+
     var elements = document.getElementsByClassName("letter");
     for (let i = 0; i < elements.length; i++) {
       elements[i].innerHTML = "";
@@ -180,11 +185,16 @@ function App() {
   useEffect(() => {
     /* it will be called when queues did update */
     restartGame();
+    setDisabledLetters((prev) => []);
   }, [wordLength]);
   useEffect(() => {
-    /* it will be called when queues did update */
-    setDisabledLetters([]);
-  }, [gameOver]);
+    let disabled = disabledLetters;
+    for (let i = 0; i < wordLength; i++) {
+      disabled.push(guess[i])
+    }
+
+    setDisabledLetters(disabled);
+  }, [guess]);
 
   function updateLengthto4() {
     setWordLength(4);
@@ -216,6 +226,7 @@ function App() {
           resultboard,
           changeableColor,
           wordLength,
+          guess
         }}
       >
         <div className="game">

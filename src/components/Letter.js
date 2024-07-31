@@ -4,19 +4,24 @@ import { AppContext } from "../App";
 function Letter({ letterPos, attemptVal }) {
   const {
     board,
+    disabledLetters,
     setDisabledLetters,
     currAttempt,
     correctWord,
     changeableColor,
     wordLength,
+    guess,
   } = useContext(AppContext);
   const letter = board[attemptVal][letterPos];
 
   useEffect(() => {
-    if (letter !== "") {
-      setDisabledLetters((prev) => [...prev, letter]);
-    }
+    // if (letter !== "") {
+    //   setDisabledLetters((prev) => [...prev, letter]);
+    //   console.log(disabledLetters)
+    // }
+
   }, [currAttempt.attempt]);
+
   const nextColor = () => {
     var elements = document.getElementsByClassName("letter");
     const idx = attemptVal * wordLength + letterPos;
