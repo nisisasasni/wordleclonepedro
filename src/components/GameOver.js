@@ -14,8 +14,13 @@ function GameOver() {
   return (
     <div className="gameOver">
       <h3>{gameOver.guessedWord ? "Kamu benar!" : "Nice try bos"}</h3>
-      <h1>Jawabannya {correctWord}</h1>
+      <h3>Jawabannya {correctWord.toUpperCase()}</h3>
       {gameOver.guessedWord}
+      <a href="https://katlaxoo.vercel.app">
+        <div style={{ padding: "10px" }} id="upper-btn">
+          Mulai baru
+        </div>
+      </a>
     </div>
   );
 }
