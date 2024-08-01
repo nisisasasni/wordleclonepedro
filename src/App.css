@@ -42,14 +42,14 @@ nav h1 {
 
 .board {
   width: 230px;
-  height: 55vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
 }
 
 .resultboard {
   width: 120px;
-  height: 55vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
 }
@@ -59,7 +59,7 @@ nav h1 {
   height: 20 vh;
   display: flex;
   flex-direction: row;
-  margin: 5px;
+  margin: 2px;
 }
 
 .column1 {
@@ -196,7 +196,7 @@ nav h1 {
   display: flex;
   flex-direction: row;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
   overflow-y: scroll;
 }
 
