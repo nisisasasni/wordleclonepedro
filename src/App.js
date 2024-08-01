@@ -217,11 +217,17 @@ function App() {
         <div className="game">
           <div className="upper-section">
             <div className="word-length-opts">
+              <a href="https://katla300.vercel.app">
+                <div id="upper-btn">3 huruf</div>
+              </a>
               <a href="https://katla400.vercel.app">
                 <div id="upper-btn">4 huruf</div>
               </a>
               <a href="https://katla600.vercel.app">
                 <div id="upper-btn">6 huruf</div>
+              </a>
+              <a href="https://katla700.vercel.app">
+                <div id="upper-btn">7 huruf</div>
               </a>
             </div>
             <div className="buttons">
