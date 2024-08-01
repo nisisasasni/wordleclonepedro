@@ -119,7 +119,7 @@ function App() {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
-    if (currAttempt.attempt === 8) {
+    if (currAttempt.attempt === 14) {
       setGameOver({ gameOver: true, guessedWord: false });
       return;
     }

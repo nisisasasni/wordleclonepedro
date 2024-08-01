@@ -62,6 +62,43 @@ function Board() {
           <Letter letterPos={2} attemptVal={8} />
           <Letter letterPos={3} attemptVal={8} />
         </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={9} />
+          <Letter letterPos={1} attemptVal={9} />
+          <Letter letterPos={2} attemptVal={9} />
+          <Letter letterPos={3} attemptVal={9} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={10} />
+          <Letter letterPos={1} attemptVal={10} />
+          <Letter letterPos={2} attemptVal={10} />
+          <Letter letterPos={3} attemptVal={10} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={11} />
+          <Letter letterPos={1} attemptVal={11} />
+          <Letter letterPos={2} attemptVal={11} />
+          <Letter letterPos={3} attemptVal={11} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={12} />
+          <Letter letterPos={1} attemptVal={12} />
+          <Letter letterPos={2} attemptVal={12} />
+          <Letter letterPos={3} attemptVal={12} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={13} />
+          <Letter letterPos={1} attemptVal={13} />
+          <Letter letterPos={2} attemptVal={13} />
+          <Letter letterPos={3} attemptVal={13} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={14} />
+          <Letter letterPos={1} attemptVal={14} />
+          <Letter letterPos={2} attemptVal={14} />
+          <Letter letterPos={3} attemptVal={14} />
+        </div>
+
       </div>
     );
   } else if (wordLength === 5) {
@@ -130,6 +167,48 @@ function Board() {
           <Letter letterPos={2} attemptVal={8} />
           <Letter letterPos={3} attemptVal={8} />
           <Letter letterPos={4} attemptVal={8} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={9} />
+          <Letter letterPos={1} attemptVal={9} />
+          <Letter letterPos={2} attemptVal={9} />
+          <Letter letterPos={3} attemptVal={9} />
+          <Letter letterPos={4} attemptVal={9} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={10} />
+          <Letter letterPos={1} attemptVal={10} />
+          <Letter letterPos={2} attemptVal={10} />
+          <Letter letterPos={3} attemptVal={10} />
+          <Letter letterPos={4} attemptVal={10} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={11} />
+          <Letter letterPos={1} attemptVal={11} />
+          <Letter letterPos={2} attemptVal={11} />
+          <Letter letterPos={3} attemptVal={11} />
+          <Letter letterPos={4} attemptVal={11} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={12} />
+          <Letter letterPos={1} attemptVal={12} />
+          <Letter letterPos={2} attemptVal={12} />
+          <Letter letterPos={3} attemptVal={12} />
+          <Letter letterPos={4} attemptVal={12} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={13} />
+          <Letter letterPos={1} attemptVal={13} />
+          <Letter letterPos={2} attemptVal={13} />
+          <Letter letterPos={3} attemptVal={13} />
+          <Letter letterPos={4} attemptVal={13} />
+        </div>
+        <div className="row">
+          <Letter letterPos={0} attemptVal={14} />
+          <Letter letterPos={1} attemptVal={14} />
+          <Letter letterPos={2} attemptVal={14} />
+          <Letter letterPos={3} attemptVal={14} />
+          <Letter letterPos={4} attemptVal={14} />
         </div>
       </div>
     );
