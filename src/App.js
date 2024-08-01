@@ -33,7 +33,6 @@ function App() {
     generateWordSet(wordLength).then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
-      console.log(words.todaysWord);
     });
   }, []);
   function remove_character(str, char_pos) {
@@ -109,7 +108,6 @@ function App() {
           newChangeable[start + i] = 1;
         }
         setChangeableColor(newChangeable);
-        console.log(changeableColor);
       }
 
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
@@ -166,7 +164,6 @@ function App() {
     generateWordSet(wordLength).then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
-      console.log(words.todaysWord);
     });
     setDisabledLetters([]);
     var elements = document.getElementsByClassName("letter");
