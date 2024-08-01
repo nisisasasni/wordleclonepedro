@@ -39,7 +39,7 @@ function Letter({ letterPos, attemptVal }) {
   };
   return (
     <div className="letter" onClick={nextColor} id="blank">
-      {letter}
+      {currAttempt.attempt === 0 && currAttempt.letter === 0 ? "" : letter}
     </div>
   );
 }

@@ -139,6 +139,10 @@ function App() {
   const onSelectLetter = (key) => {
     console.log("posisi huruf " + currAttempt.letter);
     if (currAttempt.letter > wordLength - 1) return;
+    setCurrAttempt({
+      attempt: currAttempt.attempt,
+      letter: currAttempt.letter + 1,
+    });
     const newBoard = [...board];
     newBoard[currAttempt.attempt][currAttempt.letter] = key;
     setBoard(newBoard);
@@ -163,6 +167,19 @@ function App() {
     }
   };
   const restartGame = () => {
+    // var elements = document.getElementsByClassName("letter");
+    // for (let i = 0; i < elements.length; i++) {
+    //   elements[i].innerHTML = "";
+    //   elements[i].id = "blank";
+    // }
+    // var elements = document.getElementsByClassName("result");
+    // for (let i = 0; i < elements.length; i++) {
+    //   elements[i].innerHTML = "";
+    // }
+    setGuess('');
+    setBoard(boardDefault[wordLength - 1]);
+    setResultBoard(resultBoardDefault);
+    setWordSet(new Set());
     setCurrAttempt({ attempt: 0, letter: 0 });
     setGameOver({ gameOver: false, guessedWord: false });
     generateWordSet(wordLength).then((words) => {
@@ -171,15 +188,7 @@ function App() {
       console.log(words.todaysWord);
     });
 
-    var elements = document.getElementsByClassName("letter");
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].innerHTML = "";
-      elements[i].id = "blank";
-    }
-    var elements = document.getElementsByClassName("result");
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].innerHTML = "";
-    }
+
   };
 
   useEffect(() => {
@@ -192,7 +201,6 @@ function App() {
     for (let i = 0; i < wordLength; i++) {
       disabled.push(guess[i])
     }
-
     setDisabledLetters(disabled);
   }, [guess]);
 
