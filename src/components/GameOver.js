@@ -31,12 +31,12 @@ function GameOver() {
   }, [handleKeyboard]);
 
   return (
-    <div className="gameOver" onKeyDown={handleKeyboard}>
+    <div className="gameOver">
       <h3>{gameOver.guessedWord ? "Kamu benar!" : "Nice try bos"}</h3>
       <h3>Jawabannya {correctWord.toUpperCase()}</h3>
       {gameOver.guessedWord}
       <a href="https://katlaxoo.vercel.app">
-        <div style={{ padding: "10px" }} id="upper-btn">
+        <div style={{ padding: "10px" }} id="upper-btn" onKeyDown={handleKeyboard}>
           Mulai baru
         </div>
       </a>
