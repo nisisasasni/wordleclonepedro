@@ -8,12 +8,75 @@ export const boardDefault = [
   [],
   [],
   [],
-  Array(15).fill(Array(4).fill("")),
-  Array(15).fill(Array(5).fill("")),
-  Array(15).fill(Array(6).fill("")),
-  Array(15).fill(Array(7).fill("")),
+  [
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+  ],
+  [
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+  ],
+  [
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+  ],
 ];
-export const resultBoardDefault = Array(15).fill(Array(3).fill(""));
+export const resultBoardDefault = [
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+];
 export const changeableColorDefault = [
   [],
   [],
@@ -24,8 +87,6 @@ export const changeableColorDefault = [
 ];
 
 export const generateWordSet = async (wordLength) => {
-  console.log(wordLength);
-
   let wordSet;
   let todaysWord;
   if (wordLength === 4) {
@@ -35,12 +96,14 @@ export const generateWordSet = async (wordLength) => {
         const dailyWordArr = result.split("\r\n");
         todaysWord =
           dailyWordArr[Math.floor(Math.random() * dailyWordArr.length)];
+
       });
     await fetch(wordBank4)
       .then((response) => response.text())
       .then((result) => {
         const wordArr = result.split("\r\n");
         wordSet = new Set(wordArr);
+
       });
   } else if (wordLength === 5) {
     await fetch(dailyWordBank5)
