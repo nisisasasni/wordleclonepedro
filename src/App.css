@@ -70,7 +70,7 @@ nav h1 {
   place-items: center;
   font-size: 14px;
   font-weight: bolder;
-  color: white;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #528d4e;
   border: 1px solid black;
@@ -84,7 +84,7 @@ nav h1 {
   place-items: center;
   font-size: 14px;
   font-weight: bolder;
-  color: white;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #b49f39;
   border: 1px solid black;
@@ -98,7 +98,7 @@ nav h1 {
   place-items: center;
   font-size: 14px;
   font-weight: bolder;
-  color: white;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #d45e4c;
   border: 1px solid black;
@@ -113,7 +113,7 @@ nav h1 {
   place-items: center;
   font-size: 14px;
   font-weight: bolder;
-  color: white;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   -webkit-user-select: none;
@@ -137,7 +137,8 @@ nav h1 {
 }
 
 #blank {
-  background-color: black;
+  
+  background-color: #949494;
 }
 
 .line1 {
