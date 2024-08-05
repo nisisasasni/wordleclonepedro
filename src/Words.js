@@ -4,6 +4,8 @@ import wordBank5 from "./kata_5_huruf.txt";
 import dailyWordBank5 from "./kata_5_huruf_lazim.txt";
 import wordBank6 from "./kata_6_huruf.txt";
 import dailyWordBank6 from "./kata_6_huruf_lazim.txt";
+import wordBank7 from "./kata_7_huruf.txt";
+import dailyWordBank7 from "./kata_7_huruf_lazim.txt";
 export const boardDefault = [
   [],
   [],
@@ -59,6 +61,23 @@ export const boardDefault = [
     ["", "", "", "", "", ""],
     ["", "", "", "", "", ""],
   ],
+  [
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", ""],
+  ]
 ];
 export const resultBoardDefault = [
   ["", "", ""],
@@ -84,6 +103,8 @@ export const changeableColorDefault = [
   Array(15 * 4).fill(0),
   Array(15 * 5).fill(0),
   Array(15 * 6).fill(0),
+  Array(15 * 7).fill(0),
+
 ];
 
 export const generateWordSet = async (wordLength) => {
@@ -128,6 +149,20 @@ export const generateWordSet = async (wordLength) => {
           dailyWordArr[Math.floor(Math.random() * dailyWordArr.length)];
       });
     await fetch(wordBank6)
+      .then((response) => response.text())
+      .then((result) => {
+        const wordArr = result.split("\r\n");
+        wordSet = new Set(wordArr);
+      });
+  } else if (wordLength === 7) {
+    await fetch(dailyWordBank7)
+      .then((response) => response.text())
+      .then((result) => {
+        const dailyWordArr = result.split("\r\n");
+        todaysWord =
+          dailyWordArr[Math.floor(Math.random() * dailyWordArr.length)];
+      });
+    await fetch(wordBank7)
       .then((response) => response.text())
       .then((result) => {
         const wordArr = result.split("\r\n");
