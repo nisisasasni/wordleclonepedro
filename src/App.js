@@ -3,8 +3,6 @@ import Board from "./components/Board";
 import ResultBoard from "./components/ResultBoard";
 import Keyboard from "./components/Keyboard";
 import {
-  boardDefault,
-  resultBoardDefault,
   generateWordSet,
   changeableColorDefault,
 } from "./Words";
@@ -14,6 +12,112 @@ import GameOver from "./components/GameOver";
 export const AppContext = createContext();
 
 function App() {
+  const boardDefault = [
+    [],
+    [],
+    [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ],
+    [
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", ""],
+    ],
+    [
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+    ],
+    [
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+      ["", "", "", "", "", ""],
+    ],
+    [
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", ""],
+    ]
+  ];
+  const resultBoardDefault = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
   const [wordLength, setWordLength] = useState(5);
   const [board, setBoard] = useState(boardDefault[wordLength - 1]);
   const [resultboard, setResultBoard] = useState(resultBoardDefault);
@@ -35,6 +139,7 @@ function App() {
       setCorrectWord(words.todaysWord);
     });
   }, []);
+  
   function remove_character(str, char_pos) {
     let part1 = str.substring(0, char_pos);
     let part2 = str.substring(char_pos + 1, str.length);
@@ -109,7 +214,11 @@ function App() {
         }
         setChangeableColor(newChangeable);
       }
-
+      let dis = disabledLetters;
+      for (let i=0;i<wordLength;i++){
+        dis.push(currWord[i].toUpperCase())
+      }
+      setDisabledLetters(dis);
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
     }
 
@@ -121,6 +230,7 @@ function App() {
       setGameOver({ gameOver: true, guessedWord: false });
       return;
     }
+    
   };
 
   const onDelete = () => {
@@ -132,6 +242,7 @@ function App() {
   };
 
   const onSelectLetter = (key) => {
+    
     if (currAttempt.letter > wordLength - 1) return;
     const newBoard = [...board];
     newBoard[currAttempt.attempt][currAttempt.letter] = key;
@@ -156,6 +267,35 @@ function App() {
       }
     }
   };
+  const reset = () => {
+    setDisabledLetters([]);    
+    setCurrAttempt({ attempt: 0, letter: 0 });
+    generateWordSet(wordLength).then((words) => {
+      setWordSet(words.wordSet);
+      setCorrectWord(words.todaysWord);
+    });
+    setBoard(boardDefault[wordLength-1]);
+    setResultBoard(resultBoardDefault);
+    setChangeableColor(Array(15 * wordLength).fill(0));
+    var elements = document.getElementsByClassName("letter");
+    for (let i=0; i<elements.length;i++){
+      elements[i].id = "blank";
+    }
+    setGameOver({
+      gameOver: false,
+      guessedWord: false,
+    });
+    // var elements = document.getElementsByClassName("letter");
+    // for (let i = 0; i < elements.length; i++) {
+    //   elements[i].innerHTML = "";
+    //   elements[i].id = "blank";
+    // }
+    // var elements = document.getElementsByClassName("result");
+    // for (let i = 0; i < elements.length; i++) {
+    //   elements[i].innerHTML = "";
+    // }
+    
+  };
   const giveUp = () => {
     setGameOver({ gameOver: true, guessedWord: false });
   };
@@ -176,18 +316,26 @@ function App() {
       elements[i].innerHTML = "";
     }
   };
+  function updateLengthto3() {
+    setWordLength(3);
+  }
   function updateLengthto4() {
     setWordLength(4);
-    restartGame();
   }
   function updateLengthto5() {
     setWordLength(5);
-    restartGame();
   }
   function updateLengthto6() {
     setWordLength(6);
-    restartGame();
   }
+  function updateLengthto7() {
+    setWordLength(7);
+  }
+  
+  useEffect(() => {
+    reset();
+  }, [wordLength]);
+  
   return (
     <div className="App">
       <nav>
@@ -209,35 +357,31 @@ function App() {
           resultboard,
           changeableColor,
           wordLength,
+          reset
         }}
       >
         <div className="game">
           <div className="upper-section">
             <div className="word-length-opts">
-              <a href="https://katla300.vercel.app">
-                <div id="upper-btn">3 huruf</div>
-              </a>
-              <a href="https://katla400.vercel.app">
-                <div id="upper-btn">4 huruf</div>
-              </a>
-              <a href="https://katla600.vercel.app">
-                <div id="upper-btn">6 huruf</div>
-              </a>
-              <a href="https://katla700.vercel.app">
-                <div id="upper-btn">7 huruf</div>
-              </a>
+              <div id="upper-btn" onClick={updateLengthto3} style={{display: wordLength!=3 ? 'block' : 'none' }}>3 huruf</div>            
+              <div id="upper-btn" onClick={updateLengthto4} style={{display: wordLength!=4 ? 'block' : 'none' }}>4 huruf</div>
+              <div id="upper-btn" onClick={updateLengthto5} style={{display: wordLength!=5 ? 'block' : 'none' }}>5 huruf</div>
+              <div id="upper-btn" onClick={updateLengthto6} style={{display: wordLength!=6 ? 'block' : 'none' }}>6 huruf</div>
+              <div id="upper-btn" onClick={updateLengthto7} style={{display: wordLength!=7 ? 'block' : 'none' }}>7 huruf</div>
+            
             </div>
             <div className="buttons">
               <div id="upper-btn" onClick={giveUp}>
                 Menyerah
               </div>
-              <a href="https://katlaxoo.vercel.app">
-                <div id="upper-btn">Mulai baru</div>
-              </a>
+              
+              <div onClick={reset} id="upper-btn">Mulai Baru</div>
               <div className="reset-btn" id="upper-btn" onClick={resetColor}>
                 Reset Warna
               </div>
             </div>
+            
+            
           </div>
           <div className="bnr">
             <Board />
@@ -246,6 +390,7 @@ function App() {
           <div className="lower_section">
             {gameOver.gameOver ? <GameOver /> : <Keyboard />}
           </div>
+          
         </div>
       </AppContext.Provider>
     </div>

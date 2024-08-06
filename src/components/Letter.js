@@ -5,7 +5,7 @@ const nextColor = (e) => {
   let a = e.target.style.backgroundColor;
   console.log(a);
 };
-function Letter({ letterPos, attemptVal }) {
+function Letter({ attemptVal, letterPos }) {
   const {
     board,
     setDisabledLetters,
@@ -16,11 +16,11 @@ function Letter({ letterPos, attemptVal }) {
   } = useContext(AppContext);
   const letter = board[attemptVal][letterPos];
 
-  useEffect(() => {
-    if (letter !== "") {
-      setDisabledLetters((prev) => [...prev, letter]);
-    }
-  }, [currAttempt.attempt]);
+  // useEffect(() => {
+  //   if (letter !== "") {
+  //     setDisabledLetters((prev) => [...prev, letter]);
+  //   }
+  // }, [currAttempt.attempt]);
   const nextColor = () => {
     var elements = document.getElementsByClassName("letter");
     const idx = attemptVal * wordLength + letterPos;
@@ -38,7 +38,7 @@ function Letter({ letterPos, attemptVal }) {
   };
   return (
     <div className="letter" onClick={nextColor} id="blank">
-      {letter}
+      {board[attemptVal][letterPos]}
     </div>
   );
 }

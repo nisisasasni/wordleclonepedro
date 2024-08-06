@@ -11,12 +11,13 @@ function GameOver() {
     onSelectLetter,
     correctWord,
     onDelete,
+    reset
   } = useContext(AppContext);
   const handleKeyboard = useCallback(
     (event) => {
       if (gameOver.gameOver) {
         if (event.key === "Enter") {
-          window.location.replace("https://katlaxoo.vercel.app");
+          reset()
         }
       }
       else return;
@@ -35,11 +36,7 @@ function GameOver() {
       <h3>{gameOver.guessedWord ? "Kamu benar!" : "Nice try bos"}</h3>
       <h3>Jawabannya {correctWord.toUpperCase()}</h3>
       {gameOver.guessedWord}
-      <a href="https://katlaxoo.vercel.app">
-        <div style={{ padding: "10px" }} id="upper-btn" onKeyDown={handleKeyboard}>
-          Mulai baru
-        </div>
-      </a>
+      <div onClick={reset} id="upper-btn">Mulai Baru</div>
     </div>
   );
 }
