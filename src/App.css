@@ -17,6 +17,7 @@ body {
 }
 
 nav {
+  border-bottom: 1px solid grey;
   display: grid;
   place-items: center;
 }
@@ -73,6 +74,7 @@ nav h1 {
   color: black;
   font-family: "Rubik", sans-serif;
   background-color: #528d4e;
+  border: 1px solid black;
 }
 
 .column2 {
@@ -86,6 +88,7 @@ nav h1 {
   color: black;
   font-family: "Rubik", sans-serif;
   background-color: #b49f39;
+  border: 1px solid black;
 }
 
 .column3 {
@@ -99,11 +102,13 @@ nav h1 {
   color: black;
   font-family: "Rubik", sans-serif;
   background-color: #d45e4c;
+  border: 1px solid black;
 }
 
 .letter {
   flex: 33%;
   height: 5vh;
+  border: 1px solid grey;
   margin: 2px;
   display: grid;
   place-items: center;
